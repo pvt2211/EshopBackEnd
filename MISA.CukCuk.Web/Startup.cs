@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MISA.AplicationCore.Entities;
 using MISA.AplicationCore.Interfaces;
 using MISA.AplicationCore.Services;
 using MISA.Infrastructure.Repositories;
@@ -47,6 +48,7 @@ namespace MISA.CukCuk.Web
             });
             services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddScoped<IStoreRepository, StoreRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

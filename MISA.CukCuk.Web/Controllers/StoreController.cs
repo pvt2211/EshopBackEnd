@@ -12,10 +12,10 @@ namespace MISA.CukCuk.Web.Controllers
 {
     public class StoreController : BaseEntityController<Store>
     {
-        IBaseService<Store> _baseService;
-        public StoreController(IBaseService<Store> baseService) : base(baseService)
+        IStoreService _storeService;
+        public StoreController(IStoreService storeService) : base(storeService)
         {
-            _baseService = baseService;
+            _storeService = storeService;
         }
     }
 }

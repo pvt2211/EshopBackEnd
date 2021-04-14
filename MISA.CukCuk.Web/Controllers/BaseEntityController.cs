@@ -36,20 +36,20 @@ namespace MISA.CukCuk.Web.Controllers
             }
         }
 
-        //// GET: api/<BaseEntityController>
-        //[HttpGet("{positionStart, offSet}")]
-        //public IActionResult GetEntityByIndexOffset(int positionStart,int offSet)
-        //{
-        //    var entities = _baseService.GetAllEntities();
-        //    if (entities.Count() == 0)
-        //    {
-        //        return NoContent();
-        //    }
-        //    else
-        //    {
-        //        return Ok(entities);
-        //    }
-        //}
+        // GET: api/<BaseEntityController>
+        [HttpGet("page")]
+        public IActionResult GetEntityByIndexOffset(int positionStart, int offSet)
+        {
+            var entities = _baseService.GetEntityByIndexOffset(positionStart, offSet);
+            if (entities.Count() == 0)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return Ok(entities);
+            }
+        }
 
         // GET api/<BaseEntityController>/5
         [HttpGet("{id}")]
