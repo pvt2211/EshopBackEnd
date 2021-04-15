@@ -91,6 +91,12 @@ namespace MISA.AplicationCore.Services
                 return serviceResult;
             }
         }
+
+        public bool CheckValid(MISAEntity entity)
+        {
+            var isValid = Validate(entity);
+            return isValid;
+        }
         /// <summary>
         /// Hàm validate dữ liệu
         /// </summary>
@@ -144,6 +150,13 @@ namespace MISA.AplicationCore.Services
             var entities = _baseRepository.GetEntityByIndexOffset(positionStart, positionStart);
             return entities;
         }
+
+        public int GetCountEntities()
+        {
+            return _baseRepository.GetCountEntities();
+        }
+
+
         #endregion
     }
 }

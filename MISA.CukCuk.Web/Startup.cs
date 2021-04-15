@@ -49,6 +49,15 @@ namespace MISA.CukCuk.Web
             services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IStoreRepository, StoreRepository>();
+            services.AddScoped<IStoreService, StoreService>();
+            services.AddScoped<IProvinceRespository, ProvinceRespository>();
+            services.AddScoped<IProvinceService, ProvinceService>();
+            services.AddScoped<IDistrictRespository, DistrictRespository>();
+            services.AddScoped<IDistrictService, DistrictService>();
+            services.AddScoped<IWardRespository, WardRespository>();
+            services.AddScoped<IWardService, WardService>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

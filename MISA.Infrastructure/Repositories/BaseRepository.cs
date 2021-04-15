@@ -130,5 +130,12 @@ namespace MISA.Infrastructure.Repositories
             var entities = _dbConnection.Query<MISAEntity>($"Proc_Get{_tableName}ByIndexOffset", param: dynamicParameters, commandType: CommandType.StoredProcedure);
             return entities;
         }
+
+        public int GetCountEntities()
+        {
+            var count =_dbConnection.Query($"Proc_GetCount{_tableName}s", commandType: CommandType.StoredProcedure).Count();
+
+            return count;
+        }
     }
 }

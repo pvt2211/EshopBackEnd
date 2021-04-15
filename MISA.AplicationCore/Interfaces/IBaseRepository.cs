@@ -48,7 +48,20 @@ namespace MISA.AplicationCore.Interfaces
         /// <returns>bản ghi đối tượng theo property tương ứng</returns>
         /// Created by pvtung (08/04/2021)
         MISAEntity GetEntityByProperty(MISAEntity entity,PropertyInfo property);
+        /// <summary>
+        /// Lấy danh sách đối tượng theo vị trí bắt đầu và số lượng
+        /// </summary>
+        /// <param name="positionStart">Vị trí bắt đầu lấy </param>
+        /// <param name="offSet">Số lượng lấy</param>
+        /// <returns>Danh sách bản ghi đối tượng tương ứng</returns>
+        /// Created by pvtung (12/04/2021)
         IEnumerable<MISAEntity> GetEntityByIndexOffset(int positionStart, int offSet);
+        /// <summary>
+        /// Lấy số lượng bản ghi của đối tượng tương ứng
+        /// </summary>
+        /// <returns>Số lượng bản ghi đối tượng</returns>
+        /// Created by pvtung(14/04/2021)
+        int GetCountEntities();
         #endregion
     }
 }
