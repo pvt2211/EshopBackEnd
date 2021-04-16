@@ -63,7 +63,6 @@ namespace MISA.AplicationCore.Interfaces
         /// <returns>Số lượng bản ghi đối tượng</returns>
         /// Created by pvtung(14/04/2021)
         int GetCountEntities();
-        bool CheckValid(MISAEntity entity);
         #endregion
     }
 }

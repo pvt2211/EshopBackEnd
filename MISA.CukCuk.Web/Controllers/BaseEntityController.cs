@@ -97,29 +97,34 @@ namespace MISA.CukCuk.Web.Controllers
             serviceResult = _baseService.Delete(id);
             if (serviceResult.MISACode == 200)
             {
-                return Ok(serviceResult);
+                return StatusCode(200,serviceResult);
             }
             else
             {
-                return BadRequest(serviceResult);
+                return StatusCode(400,serviceResult);
             }
         }
         /// <summary>
         /// Tạo một bản ghi đối tượng trong db
         /// </summary>
         /// <param name="entity">Thông tin đối tượng muốn tạo</param>
-        /// <returns>Kết quả tạo thành công hoặc ko</returns>
+        /// <returns>
+        /// -httpcode 201 nếu tạo thành công bản ghi
+        /// -httpcode 400 nếu có lỗi phía client
+        /// -httpcode 500 nếu có lỗi phía server
+        /// </returns>
+        /// created by pv tung (06/04/2021)
         [HttpPost]
         public IActionResult Insert(MISAEntity entity)
         {
             serviceResult = _baseService.Insert(entity);
             if (serviceResult.MISACode == 200)
             {
-                return Ok(serviceResult);
+                return StatusCode(201,serviceResult);
             }
             else
             {
-                return BadRequest(serviceResult);
+                return StatusCode(400, serviceResult);
             }   
         }
         /// <summary>
@@ -127,7 +132,12 @@ namespace MISA.CukCuk.Web.Controllers
         /// </summary>
         /// <param name="entity">Thông tin muốn sửa</param>
         /// <param name="id">id của đối tượng tương ứng</param>
-        /// <returns>Kết quả sửa</returns>
+        /// <returns>
+        /// -httpcode 200 nếu sửa thành công bản ghi
+        /// -httpcode 400 nếu có lỗi phía client
+        /// -httpcode 500 nếu có lỗi phía server
+        /// </returns>
+        /// Created by pvtung (06/04/2021)
         [HttpPut("{id}")]
         public IActionResult Update([FromBody]MISAEntity entity,[FromRoute]string id)
         {
@@ -156,25 +166,39 @@ namespace MISA.CukCuk.Web.Controllers
                 }
                 else
                 {
-                    keyProperty.SetValue(entity, id);
+                    keyProperty.SetValue(entity, id);   
                 }
             }
             serviceResult = _baseService.Update(entity);
             if (serviceResult.MISACode == 200)
             {
-                return Ok(serviceResult);
+                return StatusCode(200,serviceResult);
             }
             else
             {
-                return BadRequest(serviceResult);
+                return StatusCode(400,serviceResult);
             }
         }
-        [HttpGet("valid")]
-
-        public bool CheckValid([FromBody]MISAEntity entity)
+        /// <summary>
+        /// Hàm lấy tổng số bản ghi của đôi tượng
+        /// </summary>
+        /// <returns>
+        /// -HTTPcode 204 nếu không có dữ liệu
+        /// -HttpCode 200 nếu thành công
+        /// </returns>
+        /// Created by pvtung(16/04/2021)
+        [HttpGet("count")]
+        public IActionResult GetCountEntities()
         {
-            var isValid = _baseService.CheckValid(entity);
-            return !isValid;
+            var count = _baseService.GetCountEntities();
+            if (count == 0)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return Ok(count);
+            }
         }
     }
     #endregion

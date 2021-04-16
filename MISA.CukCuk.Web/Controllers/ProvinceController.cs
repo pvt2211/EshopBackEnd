@@ -17,11 +17,16 @@ namespace MISA.CukCuk.Web.Controllers
         {
             _provinceService = provinceService;
         }
-
+        /// <summary>
+        /// Lấy danh sách tỉnh/ thành theo id quốc gia
+        /// </summary>
+        /// <param name="countryId">id quốc gia</param>
+        /// <returns>Danh sách tỉnh thành tương ứng</returns>
+        /// Created by pvtung (15/04/2021)
         [HttpGet("a")]
-        public IActionResult GetProvincesByCountryId(string CountryId)
+        public IActionResult GetProvincesByCountryId(string countryId)
         {
-            var entities = _provinceService.GetProvincesByCountryId(CountryId);
+            var entities = _provinceService.GetProvincesByCountryId(countryId);
             if (entities.Count() == 0)
             {
                 return NoContent();

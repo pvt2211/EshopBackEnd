@@ -17,9 +17,14 @@ namespace MISA.CukCuk.Web.Controllers
         {
             _wardService = wardService;
         }
-
+        /// <summary>
+        /// Lấy danh sách phường xã theo id quận huyện
+        /// </summary>
+        /// <param name="districtId">id quận huyện</param>
+        /// <returns>danh sách phường xã tương ứng</returns>
+        /// Created by pvtung (15/04/2021)
         [HttpGet("a")]
-        public IActionResult GetDistrictsByProvinceId(string districtId)
+        public IActionResult GetWardsByDistrictId(string districtId)
         {
             var entities = _wardService.GetWardsByDistrictId(districtId);
             if (entities.Count() == 0)

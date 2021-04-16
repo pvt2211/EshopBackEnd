@@ -25,7 +25,11 @@ namespace MISA.CukCuk.Web.Controllers
         /// <param name="StoreCode">Mã cửa hàng muốn lấy thông tin</param>
         /// <returns>
         /// -HttpCode: 200 nếu lấy được dữ liệu
+        /// -httpcode 204 nếu không có dữ liệu
+        /// -httpcode 400 có lỗi phía client
+        /// -httpcode 500 có lỗi phía serve
         /// </returns>
+        ///  Created by pvtung (15/04/2021)
         [HttpGet("code")]
         public IActionResult GetStoreByCode(string StoreCode)
         {

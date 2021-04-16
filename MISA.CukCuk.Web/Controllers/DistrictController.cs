@@ -17,7 +17,12 @@ namespace MISA.CukCuk.Web.Controllers
         {
             _districtService = districtService;
         }
-
+        /// <summary>
+        /// Lấy danh sách quận huyện theo id tỉnh/thành phố
+        /// </summary>
+        /// <param name="provinceId">id tỉnh thành phố</param>
+        /// <returns>Danh sách quận huyện tương ứng</returns>
+        /// Created by pvtung (15/04/2021)
         [HttpGet("a")]
         public IActionResult GetDistrictsByProvinceId(string provinceId)
         {

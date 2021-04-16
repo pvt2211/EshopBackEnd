@@ -69,9 +69,6 @@ namespace MISA.AplicationCore.Services
             }
             else
             {
-                serviceResult.MISACode = (int)MISACode.IsNotValid;
-                serviceResult.Data = "Thêm thất bại";
-                serviceResult.Messenger = "Dữ liệu không hợp lệ";
                 return serviceResult;
             }
         }
@@ -90,12 +87,6 @@ namespace MISA.AplicationCore.Services
             {
                 return serviceResult;
             }
-        }
-
-        public bool CheckValid(MISAEntity entity)
-        {
-            var isValid = Validate(entity);
-            return isValid;
         }
         /// <summary>
         /// Hàm validate dữ liệu
@@ -155,8 +146,6 @@ namespace MISA.AplicationCore.Services
         {
             return _baseRepository.GetCountEntities();
         }
-
-
         #endregion
     }
 }

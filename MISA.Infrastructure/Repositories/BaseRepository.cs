@@ -133,7 +133,7 @@ namespace MISA.Infrastructure.Repositories
 
         public int GetCountEntities()
         {
-            var count =_dbConnection.Query($"Proc_GetCount{_tableName}s", commandType: CommandType.StoredProcedure).Count();
+            var count =_dbConnection.ExecuteScalar<int>($"Proc_GetCount{_tableName}s", commandType: CommandType.StoredProcedure);
 
             return count;
         }
