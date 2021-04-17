@@ -138,7 +138,7 @@ namespace MISA.AplicationCore.Services
 
         public IEnumerable<MISAEntity> GetEntityByIndexOffset(int positionStart, int offSet)
         {
-            var entities = _baseRepository.GetEntityByIndexOffset(positionStart, positionStart);
+            var entities = _baseRepository.GetEntityByIndexOffset(positionStart, offSet);
             return entities;
         }
 

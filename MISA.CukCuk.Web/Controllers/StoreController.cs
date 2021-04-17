@@ -43,5 +43,33 @@ namespace MISA.CukCuk.Web.Controllers
                 return Ok(entity);
             }
         }
+        /// <summary>
+        /// Lấy thông tin cửa hàng theo cac param filter
+        /// </summary>
+        /// <param name="StoreCode">Mã cửa hàng muốn lấy thông tin</param>
+        /// <param name="storeName">Ten cua hang muốn lấy thông tin</param>
+        /// <param name="address">Dia chi muốn lấy thông tin</param>
+        /// <param name="phoneNumber">Sod ein thoai muốn lấy thông tin</param>
+        /// <param name="status">Trang thai muốn lấy thông tin</param>
+        /// <returns>
+        /// -HttpCode: 200 nếu lấy được dữ liệu
+        /// -httpcode 204 nếu không có dữ liệu
+        /// -httpcode 400 có lỗi phía client
+        /// -httpcode 500 có lỗi phía serve
+        /// </returns>
+        ///  Created by pvtung (16/04/2021)
+        [HttpGet("filter")]
+        public IActionResult GetStoreByCode(string storeCode, string storeName, string address, string phoneNumber, int status)
+        {
+            var entities = _storeService.GetStoreFilters(storeCode, storeName, address, phoneNumber, status);
+            if (entities == null)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return Ok(entities);
+            }
+        }
     }
 }

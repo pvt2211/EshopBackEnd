@@ -18,5 +18,10 @@ namespace MISA.AplicationCore.Services
         {
             return _storeRepository.GetStoreByStoreCode(storeCode);
         }
+
+        public IEnumerable<Store> GetStoreFilters(string storeCode, string storeName, string address, string phoneNumber, int status)
+        {
+            return _storeRepository.GetStoreFilters(storeCode, storeName, address, phoneNumber, status);
+        }
     }
 }

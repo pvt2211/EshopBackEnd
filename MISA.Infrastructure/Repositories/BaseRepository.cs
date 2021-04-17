@@ -125,9 +125,9 @@ namespace MISA.Infrastructure.Repositories
         public IEnumerable<MISAEntity> GetEntityByIndexOffset(int positionStart, int offSet)
         {
             DynamicParameters dynamicParameters = new DynamicParameters();
-            dynamicParameters.Add("positionStart", offSet);
-            dynamicParameters.Add("offSet", positionStart);
-            var entities = _dbConnection.Query<MISAEntity>($"Proc_Get{_tableName}ByIndexOffset", param: dynamicParameters, commandType: CommandType.StoredProcedure);
+            dynamicParameters.Add("positionStart", positionStart);
+            dynamicParameters.Add("offSet", offSet);
+            var entities = _dbConnection.Query<MISAEntity>($"Proc_GetStoreByIndexOffset", param: dynamicParameters, commandType: CommandType.StoredProcedure);
             return entities;
         }
 

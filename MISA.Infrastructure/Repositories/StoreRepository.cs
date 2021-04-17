@@ -24,5 +24,17 @@ namespace MISA.Infrastructure.Repositories
             var store = _dbConnection.Query<Store>($"Proc_Get{_tableName}By{_tableName}Code", param: dynamicParameters, commandType: CommandType.StoredProcedure).FirstOrDefault();
             return store;
         }
+
+        public IEnumerable<Store> GetStoreFilters(string storeCode, string storeName, string address, string phoneNumber, int status)
+        {
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            dynamicParameters.Add("StoreCode", storeCode);
+            dynamicParameters.Add("StoreName", storeName);
+            dynamicParameters.Add("Address", address);
+            dynamicParameters.Add("PhoneNumber", phoneNumber);
+            dynamicParameters.Add("Status", status);
+            var stores = _dbConnection.Query<Store>($"Proc_GetStoreFilter", param: dynamicParameters, commandType: CommandType.StoredProcedure);
+            return stores;
+        }
     }
 }
